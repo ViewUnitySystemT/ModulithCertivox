@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
-import { 
-  Monitor, 
-  Minimize2, 
-  Settings2, 
+import {
+  Monitor,
+  Minimize2,
+  Settings2,
   Brain,
   Globe,
+  Shield,
+  Radio,
+  Satellite,
   ChevronDown,
   RotateCcw
 } from 'lucide-react';
@@ -46,6 +49,27 @@ const uiVariants = [
     description: 'Global satellite communication interface',
     icon: Globe,
     color: 'cyan',
+  },
+  {
+    id: 'audit' as const,
+    name: 'Audit',
+    description: 'Complete audit trail and compliance monitoring',
+    icon: Shield,
+    color: 'red',
+  },
+  {
+    id: 'transceiver' as const,
+    name: 'Transceiver',
+    description: 'RF transceiver control and monitoring',
+    icon: Radio,
+    color: 'indigo',
+  },
+  {
+    id: 'groundstation' as const,
+    name: 'Ground Station',
+    description: 'Satellite tracking and communication management',
+    icon: Satellite,
+    color: 'teal',
   },
 ];
 

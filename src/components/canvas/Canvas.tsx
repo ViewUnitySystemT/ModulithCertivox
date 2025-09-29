@@ -7,6 +7,9 @@ import MinimalUI from '../variants/MinimalUI';
 import HardwareUI from '../variants/HardwareUI';
 import NeuroUI from '../variants/NeuroUI';
 import SatelliteUI from '../variants/SatelliteUI';
+import AuditUI from '../variants/AuditUI';
+import TransceiverUI from '../variants/TransceiverUI';
+import GroundStationUI from '../variants/GroundStationUI';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 export default function Canvas() {
@@ -34,6 +37,12 @@ export default function Canvas() {
         return <NeuroUI />;
       case 'satellite':
         return <SatelliteUI />;
+      case 'audit':
+        return <AuditUI />;
+      case 'transceiver':
+        return <TransceiverUI />;
+      case 'groundstation':
+        return <GroundStationUI />;
       default:
         return <ClassicUI />;
     }

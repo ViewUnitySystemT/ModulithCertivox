@@ -164,6 +164,95 @@ export default function ChatCanvas() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey让我开始为这个任务创建todos：
-<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>
-todo_write
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (historyIndex < commandHistory.length - 1) {
+        setHistoryIndex(historyIndex + 1);
+        setInputValue(commandHistory[historyIndex + 1]);
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIndex > 0) {
+        setHistoryIndex(historyIndex - 1);
+        setInputValue(commandHistory[historyIndex - 1]);
+      } else if (historyIndex === 0) {
+        setHistoryIndex(-1);
+        setInputValue('');
+      }
+    }
+  };
+
+  return (
+    <div className="h-full flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+      {/* Header */}
+      <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+          RF Command Interface
+        </h3>
+        <div className="flex items-center space-x-2">
+          <div className={`w-2 h-2 rounded-full ${isProcessing ? 'bg-yellow-500' : 'bg-green-500'}`} />
+          <span className="text-sm text-gray-600 dark:text-gray-400">
+            {isProcessing ? 'Processing...' : 'Ready'}
+          </span>
+        </div>
+      </div>
+
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+          >
+            <div
+              className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                message.type === 'user'
+                  ? 'bg-blue-500 text-white'
+                  : message.type === 'system'
+                  ? 'bg-green-500 text-white'
+                  : message.type === 'error'
+                  ? 'bg-red-500 text-white'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white'
+              }`}
+            >
+              <p className="text-sm">{message.content}</p>
+              {message.metadata && (
+                <p className="text-xs opacity-75 mt-1">
+                  Command: {message.metadata.command}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Input */}
+      <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="flex space-x-2">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Enter RF command (e.g., 'scan', 'tune 433.92', 'status')"
+            className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            disabled={isProcessing}
+          />
+          <button
+            onClick={handleSend}
+            disabled={!inputValue.trim() || isProcessing}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Send
+          </button>
+        </div>
+        <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+          Press Enter to send, Shift+Enter for new line. Use ↑/↓ for command history.
+        </div>
+      </div>
+    </div>
+  );
+}
