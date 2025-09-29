@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📡 ModulithCertivox - Professional RF Communication System UI Portal</title>
+    <meta name="description" content="The world's first unified RF Communication System UI Portal - Professional, Modular, Auditable">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📡%3C/text%3E%3C/svg%3E">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="📡 ModulithCertivox - Professional RF Communication System UI Portal">
+    <meta property="og:description" content="The world's first unified RF Communication System UI Portal - Professional, Modular, Auditable">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viewunitysystemt.github.io/ModulithCertivox/">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="📡 ModulithCertivox - Professional RF Communication System UI Portal">
+    <meta name="twitter:description" content="The world's first unified RF Communication System UI Portal - Professional, Modular, Auditable">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .cta {
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .status {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .loading {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">📡</div>
+        <h1>ModulithCertivox</h1>
+        <p class="subtitle">Professional RF Communication System UI Portal</p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <div class="feature-title">ModulithFunkCore</div>
+                <div class="feature-desc">Yaesu FTDX101D Reference System</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔀</div>
+                <div class="feature-title">Modular UI</div>
+                <div class="feature-desc">9 Different UI Variants</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📡</div>
+                <div class="feature-title">Real-time RF</div>
+                <div class="feature-desc">Live Signal Processing</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔍</div>
+                <div class="feature-title">Audit Trail</div>
+                <div class="feature-desc">Complete Traceability</div>
+            </div>
+        </div>
+        
+        <div class="cta">
+            <a href="https://viewunitysystemt.github.io/ModulithCertivox/" class="btn">
+                🚀 Launch Application
+            </a>
+        </div>
+        
+        <div class="status">
+            ✅ <strong>Status:</strong> Application is being deployed via GitHub Actions
+        </div>
+        
+        <div class="loading">
+            <div class="spinner"></div>
+            The full Next.js application with ModulithFunkCore is being deployed...
+        </div>
+        
+        <div style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.7;">
+            <p><strong>Available UI Variants:</strong></p>
+            <p>Classic • Minimal • Hardware • Neuro • Satellite • Audit • Transceiver • Ground Station • <strong>ModulithFunkCore</strong></p>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-refresh every 30 seconds to check for deployment
+        setTimeout(() => {
+            window.location.reload();
+        }, 30000);
+        
+        // Check if the actual app is available
+        fetch('https://viewunitysystemt.github.io/ModulithCertivox/')
+            .then(response => {
+                if (response.ok) {
+                    // If the actual app is available, redirect to it
+                    window.location.href = 'https://viewunitysystemt.github.io/ModulithCertivox/';
+                }
+            })
+            .catch(() => {
+                // Keep showing this page if the app isn't ready yet
+            });
+    </script>
+</body>
+</html>
