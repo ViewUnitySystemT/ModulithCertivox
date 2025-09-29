@@ -6,8 +6,8 @@ const nextConfig = {
     unoptimized: true,
     domains: ['localhost'],
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/tel' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/tel' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/ModulithCertivox' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/ModulithCertivox' : '',
   experimental: {
     // appDir is now stable in Next.js 14
   },
