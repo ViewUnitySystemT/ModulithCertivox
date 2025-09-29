@@ -24,7 +24,8 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   env: {
-    CUSTOM_KEY: 'rf-ui-portal',
+    CUSTOM_KEY: 'rf-ui-portal-v2',
+    BUILD_TIME: new Date().toISOString(),
   },
   webpack: (config, { dev, isServer }) => {
     // Custom webpack configuration for RF applications
