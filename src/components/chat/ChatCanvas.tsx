@@ -12,10 +12,18 @@ import {
   Zap,
   Activity,
   MessageSquare,
-  Command
+  Command,
+  Shield,
+  Brain,
+  Cpu
 } from 'lucide-react';
 import { useRFHardwareStore } from '../../stores/rfHardwareStore';
 import { useUIStore } from '../../stores/uiStore';
+import CanvasExecutionLayer from '../canvas/CanvasExecutionLayer';
+import AuditChecklist from '../canvas/AuditChecklist';
+import NeuroSignalInjection from '../canvas/NeuroSignalInjection';
+import ErrorBoundaryAudit from '../canvas/ErrorBoundaryAudit';
+import { rfLogger } from '../../lib/logger';
 
 interface ChatMessage {
   id: string;
@@ -43,6 +51,13 @@ export default function ChatCanvas() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  
+  // Canvas-Only Components State
+  const [showAuditChecklist, setShowAuditChecklist] = useState(false);
+  const [showNeuroInjection, setShowNeuroInjection] = useState(false);
+  const [showExecutionLayer, setShowExecutionLayer] = useState(false);
+  const [auditResults, setAuditResults] = useState<any[]>([]);
+  const [errorHistory, setErrorHistory] = useState<any[]>([]);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -82,6 +97,36 @@ export default function ChatCanvas() {
     });
 
     try {
+      // Canvas-Only Commands
+      if (lowerCommand.includes('audit') || lowerCommand.includes('checklist')) {
+        setShowAuditChecklist(true);
+        addMessage({
+          type: 'system',
+          content: 'Opening Canvas Audit Checklist...',
+        });
+        return;
+      } else if (lowerCommand.includes('neuro') || lowerCommand.includes('eeg') || lowerCommand.includes('emg')) {
+        setShowNeuroInjection(true);
+        addMessage({
+          type: 'system',
+          content: 'Opening Neuro Signal Injection System...',
+        });
+        return;
+      } else if (lowerCommand.includes('execution') || lowerCommand.includes('canvas')) {
+        setShowExecutionLayer(true);
+        addMessage({
+          type: 'system',
+          content: 'Opening Canvas Execution Layer...',
+        });
+        return;
+      } else if (lowerCommand.includes('errors') || lowerCommand.includes('error history')) {
+        addMessage({
+          type: 'system',
+          content: `Error History: ${errorHistory.length} errors recorded`,
+        });
+        return;
+      }
+
       // Command processing
       if (lowerCommand.includes('scan') || lowerCommand.includes('start scan')) {
         await startScan();
@@ -253,6 +298,151 @@ export default function ChatCanvas() {
           Press Enter to send, Shift+Enter for new line. Use ↑/↓ for command history.
         </div>
       </div>
+
+      {/* Canvas-Only Components */}
+      <ErrorBoundaryAudit
+        onError={(errorAudit) => {
+          setErrorHistory(prev => [...prev, errorAudit]);
+          rfLogger.error('Error boundary caught error in ChatCanvas', {
+            errorId: errorAudit.id,
+            auditHash: errorAudit.auditHash,
+          });
+        }}
+      >
+        {/* Audit Checklist Modal */}
+        <AnimatePresence>
+          {showAuditChecklist && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto"
+              >
+                <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    Canvas Audit Checklist
+                  </h3>
+                  <button
+                    onClick={() => setShowAuditChecklist(false)}
+                    className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <AuditChecklist
+                  onAuditComplete={(results) => {
+                    setAuditResults(results);
+                    addMessage({
+                      type: 'system',
+                      content: `Audit completed: ${results.length} items checked`,
+                    });
+                  }}
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Neuro Signal Injection Modal */}
+        <AnimatePresence>
+          {showNeuroInjection && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              >
+                <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    Neuro Signal Injection System
+                  </h3>
+                  <button
+                    onClick={() => setShowNeuroInjection(false)}
+                    className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <NeuroSignalInjection
+                  onSignalReceived={(signal) => {
+                    addMessage({
+                      type: 'rf-response',
+                      content: `Neuro signal received: ${signal.type.toUpperCase()} channel ${signal.channel} - ${signal.value.toFixed(3)}`,
+                      metadata: {
+                        frequency: signal.frequency,
+                        power: signal.amplitude,
+                        command: 'neuro-signal',
+                      },
+                    });
+                  }}
+                  onDeviceConnected={(device) => {
+                    addMessage({
+                      type: 'system',
+                      content: `Neuro device connected: ${device.name} (${device.type.toUpperCase()})`,
+                    });
+                  }}
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Canvas Execution Layer Modal */}
+        <AnimatePresence>
+          {showExecutionLayer && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              >
+                <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    Canvas Execution Layer
+                  </h3>
+                  <button
+                    onClick={() => setShowExecutionLayer(false)}
+                    className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <CanvasExecutionLayer
+                  variant="chat-canvas"
+                  onExecutionComplete={(state) => {
+                    addMessage({
+                      type: 'system',
+                      content: `Canvas execution completed: ${state.executionCount} executions, ${state.errors.length} errors`,
+                    });
+                  }}
+                >
+                  <div className="p-6">
+                    <div className="text-center text-gray-600 dark:text-gray-300">
+                      Canvas Execution Layer is running in the background...
+                    </div>
+                  </div>
+                </CanvasExecutionLayer>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </ErrorBoundaryAudit>
     </div>
-  );
-}
