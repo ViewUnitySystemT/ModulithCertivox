@@ -371,13 +371,23 @@ jobs:
         run: pnpm export
 
       - name: Create .nojekyll file
-        run: echo. > out/.nojekyll
+        run: echo. > .nojekyll
 
       - name: Deploy to GitHub Pages (Production)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: .
+          exclude_assets: |
+            node_modules
+            .next
+            src
+            .github
+            *.md
+            *.json
+            *.js
+            *.ts
+            *.tsx
 
       - name: Notify deployment success
         uses: 8398a7/action-slack@v3
