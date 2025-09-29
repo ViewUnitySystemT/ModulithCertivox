@@ -205,6 +205,15 @@ export const rfLogger = {
   
   error: (message: string, metadata?: Record<string, unknown>) => 
     logger.error(message, 'RF-ERROR', metadata),
+  
+  info: (message: string, metadata?: Record<string, unknown>) => 
+    logger.info(message, 'RF-INFO', metadata),
+  
+  debug: (message: string, metadata?: Record<string, unknown>) => 
+    logger.debug(message, 'RF-DEBUG', metadata),
+  
+  warn: (message: string, metadata?: Record<string, unknown>) => 
+    logger.warn(message, 'RF-WARN', metadata),
 };
 
 // Performance logging
