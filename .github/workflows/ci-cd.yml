@@ -54,6 +54,9 @@ jobs:
       - name: Check Prettier formatting
         run: pnpm format:check
 
+      - name: Run System Audit
+        run: pnpm audit
+
   # Unit Tests
   unit-tests:
     name: Unit Tests

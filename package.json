@@ -17,6 +17,7 @@
     "test:e2e:ui": "playwright test --ui",
     "rf-server": "python src/server/rf_backend_server.py",
     "audit-export": "python src/tools/audit_exporter.py",
+    "audit": "ts-node auditCheck.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "analyze": "npm run build && npx @next/bundle-analyzer",
