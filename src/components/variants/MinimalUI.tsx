@@ -55,8 +55,6 @@ export default function MinimalUI() {
                 <Power className="w-5 h-5 mr-2 text-blue-600" />
                 System Control
               </h3>
-              etSystem
-              </h3>
               
               <div className="text-center mb-4">
                 <motion.button

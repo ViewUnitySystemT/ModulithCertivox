@@ -146,7 +146,8 @@ export default function ChatCanvas() {
       
     } catch (error) {
       addMessage({
-        type: '<｜tool▁sep｜>content: `Error processing command: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        type: 'error',
+        content: `Error processing command: ${error instanceof Error ? error.message : 'Unknown error'}`,
         metadata: { command: command.toLowerCase().split(' ')[0] },
       });
     } finally {
