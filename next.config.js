@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+    domains: ['localhost'],
+  },
+  basePath: process.env.NODE_ENV === 'production' ? '/ModulithCertivox' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/ModulithCertivox' : '',
   experimental: {
     // appDir is now stable in Next.js 14
   },
@@ -15,36 +23,8 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  images: {
-    domains: ['localhost'],
-  },
   env: {
     CUSTOM_KEY: 'rf-ui-portal',
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-        ],
-      },
-    ];
   },
   webpack: (config, { dev, isServer }) => {
     // Custom webpack configuration for RF applications
