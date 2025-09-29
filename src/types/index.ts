@@ -269,6 +269,7 @@ export enum UIMode {
   MINIMAL = 'minimal', 
   HARDWARE = 'hardware',
   NEURO = 'neuro',
+  SATELLITE = 'satellite',
 }
 
 export enum Theme {

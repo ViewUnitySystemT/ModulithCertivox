@@ -6,6 +6,7 @@ import ClassicUI from '../variants/ClassicUI';
 import MinimalUI from '../variants/MinimalUI';
 import HardwareUI from '../variants/HardwareUI';
 import NeuroUI from '../variants/NeuroUI';
+import SatelliteUI from '../variants/SatelliteUI';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 export default function Canvas() {
@@ -31,6 +32,8 @@ export default function Canvas() {
         return <HardwareUI />;
       case 'neuro':
         return <NeuroUI />;
+      case 'satellite':
+        return <SatelliteUI />;
       default:
         return <ClassicUI />;
     }

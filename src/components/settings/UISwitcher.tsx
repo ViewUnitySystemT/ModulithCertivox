@@ -4,6 +4,7 @@ import {
   Minimize2, 
   Settings2, 
   Brain,
+  Globe,
   ChevronDown,
   RotateCcw
 } from 'lucide-react';
@@ -38,6 +39,13 @@ const uiVariants = [
     description: 'EEG/EMG and Brain-Computer Interface',
     icon: Brain,
     color: 'orange',
+  },
+  {
+    id: 'satellite' as const,
+    name: 'Satellite',
+    description: 'Global satellite communication interface',
+    icon: Globe,
+    color: 'cyan',
   },
 ];
 
