@@ -6,7 +6,6 @@ import {
   Bell, 
   User,
   ChevronDown,
-  LogOut,
   Shield,
   Download,
   Globe,
@@ -216,7 +215,7 @@ export default function ProfessionalHeader() {
                   <User className="w-4 h-4 text-white" />
                 </div>
                 <span className={`text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gray-600'}`}>
-                  R.D.TEL
+                  RF Portal
                 </span>
                 <ChevronDown className="w-4 h-4" />
               </motion.button>
@@ -240,10 +239,10 @@ export default function ProfessionalHeader() {
                     </div>
                     <div>
                       <h3 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                        Raymond Demitrio Tel
+                        RF Portal User
                       </h3>
                       <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
-                        System Administrator
+                        System User
                       </p>
                     </div>
                   </div>
@@ -270,12 +269,6 @@ export default function ProfessionalHeader() {
                       <span className="text-sm">Network Status</span>
                     </button>
                     
-                    <button className={`w-full flex items-center space-x-2 px-3 py-2 rounded-lg text-left transition-colors ${
-                      darkMode ? 'hover:bg-gray-700 text-gray-200 hover:text-red-300' : 'hover:bg-gray-100 text-gray-700 hover:text-red-600'
-                    }`}>
-                      <LogOut className="w-4 h-4" />
-                      <span className="text-sm">Sign Out</span>
-                    </button>
                   </div>
                 </div>
               </motion.div>
