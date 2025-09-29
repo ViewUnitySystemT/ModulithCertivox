@@ -39,7 +39,7 @@
         
         .container {
             text-align: center;
-            max-width: 800px;
+            max-width: 1000px;
             padding: 2rem;
         }
         
@@ -79,6 +79,11 @@
             border-radius: 12px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
         }
         
         .feature-icon {
@@ -112,11 +117,21 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(10px);
+            margin: 0.5rem;
         }
         
         .btn:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
+        }
+        
+        .btn.primary {
+            background: rgba(59, 130, 246, 0.8);
+            border-color: rgba(59, 130, 246, 0.9);
+        }
+        
+        .btn.primary:hover {
+            background: rgba(59, 130, 246, 1);
         }
         
         .status {
@@ -149,6 +164,56 @@
             to { transform: rotate(360deg); }
         }
         
+        .demo-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .ui-variants {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .variant {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .variant:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .variant-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .variant-desc {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .highlight {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -163,6 +228,10 @@
             }
             
             .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .ui-variants {
                 grid-template-columns: 1fr;
             }
         }
@@ -198,8 +267,11 @@
         </div>
         
         <div class="cta">
-            <a href="https://viewunitysystemt.github.io/ModulithCertivox/" class="btn">
+            <a href="https://viewunitysystemt.github.io/ModulithCertivox/" class="btn primary">
                 🚀 Launch Application
+            </a>
+            <a href="https://github.com/ViewUnitySystemT/ModulithCertivox" class="btn">
+                📁 View Source Code
             </a>
         </div>
         
@@ -212,9 +284,51 @@
             The full Next.js application with ModulithFunkCore is being deployed...
         </div>
         
+        <div class="demo-section">
+            <div class="demo-title">🎛️ Available UI Variants</div>
+            <div class="ui-variants">
+                <div class="variant">
+                    <div class="variant-name">Classic</div>
+                    <div class="variant-desc">Full Audit View</div>
+                </div>
+                <div class="variant">
+                    <div class="variant-name">Minimal</div>
+                    <div class="variant-desc">Embedded Systems</div>
+                </div>
+                <div class="variant">
+                    <div class="variant-name">Hardware</div>
+                    <div class="variant-desc">Real-time Hardware Status</div>
+                </div>
+                <div class="variant">
+                    <div class="variant-name">Neuro</div>
+                    <div class="variant-desc">Neurointerface Integration</div>
+                </div>
+                <div class="variant">
+                    <div class="variant-name">Satellite</div>
+                    <div class="variant-desc">Ground Station Operations</div>
+                </div>
+                <div class="variant">
+                    <div class="variant-name">Audit</div>
+                    <div class="variant-desc">Complete Traceability</div>
+                </div>
+                <div class="variant">
+                    <div class="variant-name">Transceiver</div>
+                    <div class="variant-desc">RF Transceiver Control</div>
+                </div>
+                <div class="variant">
+                    <div class="variant-name">Ground Station</div>
+                    <div class="variant-desc">Mission Control</div>
+                </div>
+                <div class="variant highlight">
+                    <div class="variant-name">🆕 ModulithFunkCore</div>
+                    <div class="variant-desc">Yaesu FTDX101D Reference</div>
+                </div>
+            </div>
+        </div>
+        
         <div style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.7;">
-            <p><strong>Available UI Variants:</strong></p>
-            <p>Classic • Minimal • Hardware • Neuro • Satellite • Audit • Transceiver • Ground Station • <strong>ModulithFunkCore</strong></p>
+            <p><strong>🎯 Canvas-Only Execution:</strong> No Build Required • Real Hardware Integration • Complete Auditability</p>
+            <p><strong>📡 RF Capabilities:</strong> 26.965-27.405 MHz • AM/FM/SSB • WebUSB/WebSerial • Live Spectrum</p>
         </div>
     </div>
     
@@ -235,6 +349,16 @@
             .catch(() => {
                 // Keep showing this page if the app isn't ready yet
             });
+            
+        // Add some interactive effects
+        document.querySelectorAll('.feature').forEach(feature => {
+            feature.addEventListener('mouseenter', () => {
+                feature.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            feature.addEventListener('mouseleave', () => {
+                feature.style.transform = 'translateY(0) scale(1)';
+            });
+        });
     </script>
 </body>
 </html>
