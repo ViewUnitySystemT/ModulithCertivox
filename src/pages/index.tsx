@@ -7,6 +7,7 @@ import UISwitcher from '../components/settings/UISwitcher';
 import StatusBar from '../components/ui/StatusBar';
 import ProfessionalHeader from '../components/ui/ProfessionalHeader';
 import CommandPalette from '../components/ui/CommandPalette';
+import ErrorBoundaryAudit from '../components/canvas/ErrorBoundaryAudit';
 import { useUIStore } from '../stores/uiStore';
 import { useRFHardwareStore } from '../stores/rfHardwareStore';
 import { useThemeStore } from '../stores/themeStore';
@@ -19,7 +20,13 @@ export default function Home() {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
 
   useEffect(() => {
-    setPageLoaded(true);
+    // Add error handling to prevent infinite loading
+    try {
+      setPageLoaded(true);
+    } catch (error) {
+      console.error('Error during page initialization:', error);
+      setPageLoaded(true); // Still set to true to prevent infinite loading
+    }
   }, []);
 
   if (!pageLoaded) {
@@ -68,7 +75,9 @@ export default function Home() {
                   <UISwitcher />
                 </div>
                 <div className="h-full overflow-auto">
-                  <Canvas />
+                  <ErrorBoundaryAudit>
+                    <Canvas />
+                  </ErrorBoundaryAudit>
                 </div>
               </div>
             </div>

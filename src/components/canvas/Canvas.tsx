@@ -29,25 +29,47 @@ export default function Canvas() {
       return <LoadingSpinner />;
     }
 
-    switch (mode) {
-      case 'minimal':
-        return <MinimalUI />;
-      case 'hardware':
-        return <HardwareUI />;
-      case 'neuro':
-        return <NeuroUI />;
-      case 'satellite':
-        return <SatelliteUI />;
-      case 'audit':
-        return <AuditUI />;
-      case 'transceiver':
-        return <TransceiverUI />;
-      case 'groundstation':
-        return <GroundStationUI />;
-      case 'funkcore':
-        return <ModulithFunkCore />;
-      default:
-        return <ClassicUI />;
+    try {
+      switch (mode) {
+        case 'minimal':
+          return <MinimalUI />;
+        case 'hardware':
+          return <HardwareUI />;
+        case 'neuro':
+          return <NeuroUI />;
+        case 'satellite':
+          return <SatelliteUI />;
+        case 'audit':
+          return <AuditUI />;
+        case 'transceiver':
+          return <TransceiverUI />;
+        case 'groundstation':
+          return <GroundStationUI />;
+        case 'funkcore':
+          return <ModulithFunkCore />;
+        default:
+          return <ClassicUI />;
+      }
+    } catch (error) {
+      console.error('Error rendering UI component:', error);
+      return (
+        <div className="flex items-center justify-center h-full">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+              UI Component Error
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              Switching to Classic UI mode
+            </p>
+            <button 
+              onClick={() => window.location.reload()}
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Reload Page
+            </button>
+          </div>
+        </div>
+      );
     }
   };
 
