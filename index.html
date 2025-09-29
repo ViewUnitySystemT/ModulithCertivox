@@ -3,362 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📡 ModulithCertivox - Professional RF Communication System UI Portal</title>
-    <meta name="description" content="The world's first unified RF Communication System UI Portal - Professional, Modular, Auditable">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📡%3C/text%3E%3C/svg%3E">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="📡 ModulithCertivox - Professional RF Communication System UI Portal">
-    <meta property="og:description" content="The world's first unified RF Communication System UI Portal - Professional, Modular, Auditable">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://viewunitysystemt.github.io/ModulithCertivox/">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="📡 ModulithCertivox - Professional RF Communication System UI Portal">
-    <meta name="twitter:description" content="The world's first unified RF Communication System UI Portal - Professional, Modular, Auditable">
-    
+    <title>RF UI Portal - Professional RF Communication Interface</title>
+    <meta name="description" content="Professional RF Communication System UI Portal - All GUI/UX variants unified">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .container {
-            text-align: center;
-            max-width: 1000px;
-            padding: 2rem;
-        }
-        
-        .logo {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: pulse 2s infinite;
-        }
-        
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
         }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+        .animate-spin {
+            animation: spin 1s linear infinite;
         }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .feature {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .feature-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .feature-desc {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .cta {
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            margin: 0.5rem;
-        }
-        
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .btn.primary {
-            background: rgba(59, 130, 246, 0.8);
-            border-color: rgba(59, 130, 246, 0.9);
-        }
-        
-        .btn.primary:hover {
-            background: rgba(59, 130, 246, 1);
-        }
-        
-        .status {
-            margin-top: 2rem;
-            padding: 1rem;
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .loading {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-            margin-right: 0.5rem;
-        }
-        
         @keyframes spin {
+            from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
-        }
-        
-        .demo-section {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .demo-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .ui-variants {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .variant {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .variant:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.02);
-        }
-        
-        .variant-name {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        
-        .variant-desc {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-        
-        .highlight {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .logo {
-                font-size: 3rem;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-            }
-            
-            .ui-variants {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="logo">📡</div>
-        <h1>ModulithCertivox</h1>
-        <p class="subtitle">Professional RF Communication System UI Portal</p>
-        
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">🧠</div>
-                <div class="feature-title">ModulithFunkCore</div>
-                <div class="feature-desc">Yaesu FTDX101D Reference System</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔀</div>
-                <div class="feature-title">Modular UI</div>
-                <div class="feature-desc">9 Different UI Variants</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📡</div>
-                <div class="feature-title">Real-time RF</div>
-                <div class="feature-desc">Live Signal Processing</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔍</div>
-                <div class="feature-title">Audit Trail</div>
-                <div class="feature-desc">Complete Traceability</div>
-            </div>
-        </div>
-        
-        <div class="cta">
-            <a href="https://viewunitysystemt.github.io/ModulithCertivox/" class="btn primary">
-                🚀 Launch Application
-            </a>
-            <a href="https://github.com/ViewUnitySystemT/ModulithCertivox" class="btn">
-                📁 View Source Code
-            </a>
-        </div>
-        
-        <div class="status">
-            ✅ <strong>Status:</strong> Application is being deployed via GitHub Actions
-        </div>
-        
-        <div class="loading">
-            <div class="spinner"></div>
-            The full Next.js application with ModulithFunkCore is being deployed...
-        </div>
-        
-        <div class="demo-section">
-            <div class="demo-title">🎛️ Available UI Variants</div>
-            <div class="ui-variants">
-                <div class="variant">
-                    <div class="variant-name">Classic</div>
-                    <div class="variant-desc">Full Audit View</div>
-                </div>
-                <div class="variant">
-                    <div class="variant-name">Minimal</div>
-                    <div class="variant-desc">Embedded Systems</div>
-                </div>
-                <div class="variant">
-                    <div class="variant-name">Hardware</div>
-                    <div class="variant-desc">Real-time Hardware Status</div>
-                </div>
-                <div class="variant">
-                    <div class="variant-name">Neuro</div>
-                    <div class="variant-desc">Neurointerface Integration</div>
-                </div>
-                <div class="variant">
-                    <div class="variant-name">Satellite</div>
-                    <div class="variant-desc">Ground Station Operations</div>
-                </div>
-                <div class="variant">
-                    <div class="variant-name">Audit</div>
-                    <div class="variant-desc">Complete Traceability</div>
-                </div>
-                <div class="variant">
-                    <div class="variant-name">Transceiver</div>
-                    <div class="variant-desc">RF Transceiver Control</div>
-                </div>
-                <div class="variant">
-                    <div class="variant-name">Ground Station</div>
-                    <div class="variant-desc">Mission Control</div>
-                </div>
-                <div class="variant highlight">
-                    <div class="variant-name">🆕 ModulithFunkCore</div>
-                    <div class="variant-desc">Yaesu FTDX101D Reference</div>
-                </div>
-            </div>
-        </div>
-        
-        <div style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.7;">
-            <p><strong>🎯 Canvas-Only Execution:</strong> No Build Required • Real Hardware Integration • Complete Auditability</p>
-            <p><strong>📡 RF Capabilities:</strong> 26.965-27.405 MHz • AM/FM/SSB • WebUSB/WebSerial • Live Spectrum</p>
-        </div>
-    </div>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900">
     
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+                        RF UI Portal
+                    </h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                        Professional RF Communication System
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-600 dark:text-gray-300">Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[calc(100vh-200px)]">
+            
+            <!-- Left Panel - UI Canvas -->
+            <div class="lg:col-span-2">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 h-full min-h-[600px]">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">
+                            RF System Interface
+                        </h2>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">
+                            Mode: Classic
+                        </span>
+                    </div>
+                    <div class="h-full overflow-auto">
+                        <div class="h-full w-full bg-white dark:bg-gray-800 rounded-lg p-6">
+                            <div class="text-center py-12">
+                                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                                    RF UI Portal
+                                </h2>
+                                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                    Professional RF Communication System Interface
+                                </p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">System Status</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">All systems operational</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Connection</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Ready for communication</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Frequency</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Multi-band support</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Monitoring</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Real-time analysis</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-8 space-x-4">
+                                    <button onclick="setMode('classic')" class="px-6 py-3 rounded-lg font-medium transition-colors bg-blue-500 text-white">
+                                        Classic UI
+                                    </button>
+                                    <button onclick="setMode('minimal')" class="px-6 py-3 rounded-lg font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                        Minimal UI
+                                    </button>
+                                    <button onclick="setMode('audit')" class="px-6 py-3 rounded-lg font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                        Audit System
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Controls -->
+            <div class="space-y-6">
+                
+                <!-- Quick Controls -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+                        Quick Controls
+                    </h3>
+                    <div class="space-y-2">
+                        <button class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors">
+                            Signal Scan
+                        </button>
+                        <button class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-colors">
+                            Start Monitoring
+                        </button>
+                        <button class="w-full bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded transition-colors">
+                            Frequency Analysis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Status Panel -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+                        System Status
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-300">Connection</span>
+                            <span class="text-sm text-green-600 font-medium">Connected</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-300">Signal Strength</span>
+                            <span class="text-sm text-green-600 font-medium">-65 dBm</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-300">Frequency</span>
+                            <span class="text-sm text-blue-600 font-medium">2.4 GHz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-8">
+        <div class="container mx-auto px-4 py-4">
+            <div class="text-center text-sm text-gray-600 dark:text-gray-300">
+                <p>RF UI Portal - Professional RF Communication System</p>
+                <p class="mt-1">Status: <span class="text-green-600 font-medium">Operational</span></p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Auto-refresh every 30 seconds to check for deployment
-        setTimeout(() => {
-            window.location.reload();
-        }, 30000);
-        
-        // Check if the actual app is available
-        fetch('https://viewunitysystemt.github.io/ModulithCertivox/')
-            .then(response => {
-                if (response.ok) {
-                    // If the actual app is available, redirect to it
-                    window.location.href = 'https://viewunitysystemt.github.io/ModulithCertivox/';
-                }
-            })
-            .catch(() => {
-                // Keep showing this page if the app isn't ready yet
+        // Boot diagnostics
+        console.log('[BOOT] base', document.baseURI);
+        console.log('[BOOT] location', location.href);
+        console.log('[BOOT] timestamp', new Date().toISOString());
+        console.log('[BOOT] page loaded successfully');
+
+        // Simple mode switching
+        function setMode(mode) {
+            console.log('[BOOT] switching to mode:', mode);
+            
+            // Update mode indicator
+            document.querySelector('.text-gray-500').textContent = 'Mode: ' + mode;
+            
+            // Update button states
+            document.querySelectorAll('button[onclick^="setMode"]').forEach(btn => {
+                btn.classList.remove('bg-blue-500', 'text-white');
+                btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
             });
             
-        // Add some interactive effects
-        document.querySelectorAll('.feature').forEach(feature => {
-            feature.addEventListener('mouseenter', () => {
-                feature.style.transform = 'translateY(-5px) scale(1.02)';
-            });
-            feature.addEventListener('mouseleave', () => {
-                feature.style.transform = 'translateY(0) scale(1)';
-            });
+            // Highlight selected button
+            event.target.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            event.target.classList.add('bg-blue-500', 'text-white');
+            
+            // Update UI based on mode
+            if (mode === 'audit') {
+                document.body.className = 'min-h-screen bg-gray-100 dark:bg-gray-900';
+            } else {
+                document.body.className = 'min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900';
+            }
+        }
+
+        // Error handling
+        window.onerror = function(message, source, line, column, error) {
+            console.log('[BOOT] onerror:', message, source + ':' + line, error?.stack || '');
+        };
+
+        window.addEventListener('unhandledrejection', function(event) {
+            console.log('[BOOT] unhandled:', event.reason?.stack || event.reason || '');
         });
+
+        // Auto-refresh status every 30 seconds
+        setInterval(function() {
+            const statusElements = document.querySelectorAll('.text-green-600');
+            statusElements.forEach(el => {
+                el.style.opacity = '0.5';
+                setTimeout(() => el.style.opacity = '1', 100);
+            });
+        }, 30000);
     </script>
 </body>
 </html>
