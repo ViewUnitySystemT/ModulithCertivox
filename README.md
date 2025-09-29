@@ -1,4 +1,4 @@
-# 📡 RF UI Portal - Professional RF Communication System Interface
+# 📡 ModulithCertivox - Professional RF Communication System UI Portal
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -40,8 +40,8 @@ A centralized web portal that unifies all GUI/UX components from the auditable R
 
 ```bash
 # Clone the repository
-git clone https://github.com/YourOrg/rf-ui-portal.git
-cd rf-ui-portal
+git clone https://github.com/ViewUnitySystemT/ModulithCertivox.git
+cd ModulithCertivox
 
 # Install dependencies
 npm install
@@ -61,7 +61,7 @@ Navigate to [http://localhost:3000](http://localhost:3000) to access the portal.
 ## 🏗️ Architecture
 
 ```
-rf-ui-portal/
+ModulithCertivox/
 ├── src/
 │   ├── pages/                     # Next.js pages
 │   ├── components/                # Reusable UI components
@@ -160,10 +160,10 @@ Themes are defined in `src/styles/themes/`:
 
 ## 🌍 Community & Support
 
-- **Documentation**: [Wiki](https://github.com/YourOrg/rf-ui-portal/wiki)
-- **Issues**: [GitHub Issues](https://github.com/YourOrg/rf-ui-portal/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/YourOrg/rf-ui-portal/discussions)
-- **Roadmap**: [Project Board](https://github.com/YourOrg/rf-ui-portal/projects)
+- **Documentation**: [Wiki](https://github.com/ViewUnitySystemT/ModulithCertivox/wiki)
+- **Issues**: [GitHub Issues](https://github.com/ViewUnitySystemT/ModulithCertivox/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/ViewUnitySystemT/ModulithCertivox/discussions)
+- **Roadmap**: [Project Board](https://github.com/ViewUnitySystemT/ModulithCertivox/projects)
 
 ## 📄 License
 
