@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RF UI Portal - Professional RF Communication Interface</title>
+    <meta name="description" content="Professional RF Communication System UI Portal - All GUI/UX variants unified">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900">
+    
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+                        RF UI Portal
+                    </h1>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">
+                        Professional RF Communication System
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-sm text-gray-600 dark:text-gray-300">Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[calc(100vh-200px)]">
+            
+            <!-- Left Panel - UI Canvas -->
+            <div class="lg:col-span-2">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 h-full min-h-[600px]">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">
+                            RF System Interface
+                        </h2>
+                        <span class="text-sm text-gray-500 dark:text-gray-400">
+                            Mode: Classic
+                        </span>
+                    </div>
+                    <div class="h-full overflow-auto">
+                        <div class="h-full w-full bg-white dark:bg-gray-800 rounded-lg p-6">
+                            <div class="text-center py-12">
+                                <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                                    RF UI Portal
+                                </h2>
+                                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                    Professional RF Communication System Interface
+                                </p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">System Status</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">All systems operational</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Connection</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Ready for communication</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Frequency</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Multi-band support</p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                        <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Monitoring</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Real-time analysis</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-8 space-x-4">
+                                    <button onclick="setMode('classic')" class="px-6 py-3 rounded-lg font-medium transition-colors bg-blue-500 text-white">
+                                        Classic UI
+                                    </button>
+                                    <button onclick="setMode('minimal')" class="px-6 py-3 rounded-lg font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                        Minimal UI
+                                    </button>
+                                    <button onclick="setMode('audit')" class="px-6 py-3 rounded-lg font-medium transition-colors bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                        Audit System
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Controls -->
+            <div class="space-y-6">
+                
+                <!-- Quick Controls -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+                        Quick Controls
+                    </h3>
+                    <div class="space-y-2">
+                        <button class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors">
+                            Signal Scan
+                        </button>
+                        <button class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-colors">
+                            Start Monitoring
+                        </button>
+                        <button class="w-full bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded transition-colors">
+                            Frequency Analysis
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Status Panel -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+                        System Status
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-300">Connection</span>
+                            <span class="text-sm text-green-600 font-medium">Connected</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-300">Signal Strength</span>
+                            <span class="text-sm text-green-600 font-medium">-65 dBm</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 dark:text-gray-300">Frequency</span>
+                            <span class="text-sm text-blue-600 font-medium">2.4 GHz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-8">
+        <div class="container mx-auto px-4 py-4">
+            <div class="text-center text-sm text-gray-600 dark:text-gray-300">
+                <p>RF UI Portal - Professional RF Communication System</p>
+                <p class="mt-1">Status: <span class="text-green-600 font-medium">Operational</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Boot diagnostics
+        console.log('[BOOT] base', document.baseURI);
+        console.log('[BOOT] location', location.href);
+        console.log('[BOOT] timestamp', new Date().toISOString());
+        console.log('[BOOT] page loaded successfully');
+
+        // Simple mode switching
+        function setMode(mode) {
+            console.log('[BOOT] switching to mode:', mode);
+            
+            // Update mode indicator
+            document.querySelector('.text-gray-500').textContent = 'Mode: ' + mode;
+            
+            // Update button states
+            document.querySelectorAll('button[onclick^="setMode"]').forEach(btn => {
+                btn.classList.remove('bg-blue-500', 'text-white');
+                btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            });
+            
+            // Highlight selected button
+            event.target.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            event.target.classList.add('bg-blue-500', 'text-white');
+            
+            // Update UI based on mode
+            if (mode === 'audit') {
+                document.body.className = 'min-h-screen bg-gray-100 dark:bg-gray-900';
+            } else {
+                document.body.className = 'min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900';
+            }
+        }
+
+        // Error handling
+        window.onerror = function(message, source, line, column, error) {
+            console.log('[BOOT] onerror:', message, source + ':' + line, error?.stack || '');
+        };
+
+        window.addEventListener('unhandledrejection', function(event) {
+            console.log('[BOOT] unhandled:', event.reason?.stack || event.reason || '');
+        });
+
+        // Auto-refresh status every 30 seconds
+        setInterval(function() {
+            const statusElements = document.querySelectorAll('.text-green-600');
+            statusElements.forEach(el => {
+                el.style.opacity = '0.5';
+                setTimeout(() => el.style.opacity = '1', 100);
+            });
+        }, 30000);
+    </script>
+</body>
+</html>
