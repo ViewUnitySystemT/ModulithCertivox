@@ -4,40 +4,78 @@
 
 A centralized web portal that unifies all GUI/UX components from the auditable RF stack. Users can switch between different UI styles, control modes, and visualizations - everything modular, auditable, and fully configurable.
 
+## 🚀 **LIVE DEMO**
+
+**🌐 [ModulithFunkCore RF System - LIVE NOW!](https://viewunitysystemt.github.io/ModulithCertivox/)**
+
+The complete ModulithFunkCore implementation is now live with:
+- ✅ **Yaesu FTDX101D Reference Implementation**
+- ✅ **Real-time Frequency Control** (26.965-27.405 MHz)
+- ✅ **AM/FM/SSB Modulation Switching**
+- ✅ **Live Spectrum Display**
+- ✅ **Complete Audit Trail with Hash Certification**
+- ✅ **Hardware Connection Simulation**
+- ✅ **Canvas-Only Execution** (No Build Required)
+
 ## 🎯 Features
 
-- 🔀 **Modular UI Switching** - Switch between Classic, Minimal, Hardware, and Neuro interfaces
-- 🧠 **Chat Canvas Integration** - Interactive RF command interface
-- 📡 **Real-time Signal Visualization** - Live RF signal path monitoring
-- 📜 **Audit Certification System** - Complete traceability and certification
-- ⚙️ **Professional Customization** - Full user configuration capabilities
-- 🧬 **Neurointerface Ready** - EEG/EMG integration preparation
-- 🏗️ **Hardware Integration** - Real RF hardware control via WebSocket/API
-- 🎨 **Professional Themes** - Dark, Light, Legacy, and Custom themes
-- ⌨️ **Command Palette** - Global search and quick actions (Ctrl+K)
-- 🔍 **Advanced Search** - Fuzzy search across all components
-- 📊 **Real-time Monitoring** - Live hardware status and performance metrics
-- 🔐 **Security Hardened** - Environment validation, secure logging, audit trails
+* 🔀 **Modular UI Switching** - Switch between Classic, Minimal, Hardware, and Neuro interfaces
+* 🧠 **Chat Canvas Integration** - Interactive RF command interface
+* 📡 **Real-time Signal Visualization** - Live RF signal path monitoring
+* 📜 **Audit Certification System** - Complete traceability and certification
+* ⚙️ **Professional Customization** - Full user configuration capabilities
+* 🧬 **Neurointerface Ready** - EEG/EMG integration preparation
+* 🏗️ **Hardware Integration** - Real RF hardware control via WebSocket/API
+* 🎨 **Professional Themes** - Dark, Light, Legacy, and Custom themes
+* ⌨️ **Command Palette** - Global search and quick actions (Ctrl+K)
+* 🔍 **Advanced Search** - Fuzzy search across all components
+* 📊 **Real-time Monitoring** - Live hardware status and performance metrics
+* 🔐 **Security Hardened** - Environment validation, secure logging, audit trails
 
 ## 🏛️ UI Variants
 
-| Variant      | Focus                      | Use Case                                          |
-| ------------ | -------------------------- | ------------------------------------------------- |
-| **Classic**  | Full Audit View            | Complete RF system monitoring with certifications |
-| **Minimal**  | Embedded Systems           | Essential controls for limited hardware           |
-| **Hardware** | Real-time Hardware Status  | GPIO, RF levels, transceiver monitoring           |
-| **Neuro**    | Neurointerface Integration | EEG/EMG visualization, BCI mode                   |
-| **Satellite** | Ground Station Operations | Satellite tracking and communication management   |
-| **Transceiver** | RF Transceiver Control | Channel management and signal processing         |
-| **Ground Station** | Mission Control | Multi-station coordination and monitoring        |
+| Variant            | Focus                      | Use Case                                          |
+| ------------------ | -------------------------- | ------------------------------------------------- |
+| **Classic**        | Full Audit View            | Complete RF system monitoring with certifications |
+| **Minimal**        | Embedded Systems           | Essential controls for limited hardware           |
+| **Hardware**       | Real-time Hardware Status  | GPIO, RF levels, transceiver monitoring           |
+| **Neuro**          | Neurointerface Integration | EEG/EMG visualization, BCI mode                   |
+| **Satellite**      | Ground Station Operations  | Satellite tracking and communication management   |
+| **Transceiver**    | RF Transceiver Control     | Channel management and signal processing          |
+| **Ground Station** | Mission Control            | Multi-station coordination and monitoring         |
+| **🆕 ModulithFunkCore** | Yaesu FTDX101D Reference | Complete RF System with Canvas-Only Execution    |
+
+## 🧠 **ModulithFunkCore - The Revolutionary RF System**
+
+The **ModulithFunkCore** is our flagship implementation featuring:
+
+### **📡 RF Capabilities:**
+- **Frequency Range:** 26.965 - 27.405 MHz (CB Band)
+- **Modulations:** AM, FM, SSB (Single Side Band)
+- **Hardware Support:** Yaesu FTDX101D, Icom IC-7300, Kenwood TS-590
+- **Real-time Spectrum:** Canvas-based visualization
+- **WebUSB/WebSerial:** Direct hardware integration
+
+### **🔍 Audit & Certification:**
+- **Hash Certification:** SHA256 for every action
+- **Complete Traceability:** Timestamp, Hash, Metadata
+- **Export Functions:** JSON, Markdown, Canvas-Snapshot
+- **Real-time Monitoring:** Signal Strength, Noise Level
+
+### **🎨 Pixel-Perfect UI:**
+- **Yaesu FTDX101D Reference:** Exact replica implementation
+- **Dual-Screen Layout:** Frequency + Spectrum left, Controls right
+- **Rotary Dial Emulation:** Touch/Mouse-based frequency selection
+- **Modulation Switcher:** AM/FM/SSB buttons
+- **Audit Trail Panel:** Real-time log display
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- Python 3.9+ (for RF backend)
-- RF Hardware (optional, simulation available)
+* Node.js 18+
+* Python 3.9+ (for RF backend)
+* RF Hardware (optional, simulation available)
 
 ### Installation
 
@@ -93,16 +131,16 @@ ModulithCertivox/
 
 ## 🧩 Core Technologies
 
-- **Frontend**: React 18 + Next.js 14 + TypeScript
-- **Styling**: TailwindCSS + Framer Motion animations
-- **State**: Zustand for state management
-- **Backend**: Python Flask/FastAPI for RF hardware
-- **Real-time**: Socket.IO for live communication
-- **Charts**: Chart.js for signal visualization
-- **Search**: Fuse.js for fuzzy search
-- **Logging**: Custom logger with remote capabilities
-- **Testing**: Vitest + Playwright + Jest
-- **CI/CD**: GitHub Actions with quality gates
+* **Frontend**: React 18 + Next.js 14 + TypeScript
+* **Styling**: TailwindCSS + Framer Motion animations
+* **State**: Zustand for state management
+* **Backend**: Python Flask/FastAPI for RF hardware
+* **Real-time**: Socket.IO for live communication
+* **Charts**: Chart.js for signal visualization
+* **Search**: Fuse.js for fuzzy search
+* **Logging**: Custom logger with remote capabilities
+* **Testing**: Vitest + Playwright + Jest
+* **CI/CD**: GitHub Actions with quality gates
 
 ## ⚙️ Configuration
 
@@ -189,68 +227,72 @@ npm run clean           # Clean build artifacts
 
 ## 🔐 Security & Audit
 
-- **Environment Validation**: Zod schema validation for all environment variables
-- **Secure Logging**: Structured logging with remote capabilities
-- **Audit Trail**: Complete operation logging and certification
-- **Hardware Access**: Authenticated and secured hardware control
-- **Export Functionality**: Compliance reporting capabilities
-- **No Console Logs**: All logging goes through professional logger
-- **Type Safety**: Strict TypeScript configuration with no `any` types
+* **Environment Validation**: Zod schema validation for all environment variables
+* **Secure Logging**: Structured logging with remote capabilities
+* **Audit Trail**: Complete operation logging and certification
+* **Hardware Access**: Authenticated and secured hardware control
+* **Export Functionality**: Compliance reporting capabilities
+* **No Console Logs**: All logging goes through professional logger
+* **Type Safety**: Strict TypeScript configuration with no `any` types
 
 ## 📊 Professional Features
 
-- **Real-time Signal Monitoring**: Live RF signal visualization
-- **Hardware Control**: GPIO, transceiver status, frequency tuning
-- **Audit Trail**: Complete operation logging and certification
-- **Multi-device Support**: Desktop, tablet, mobile, embedded
-- **Accessibility**: WCAG 2.1 AA compliance
-- **Performance**: Optimized for real-time RF operations
-- **Command Palette**: Global search and quick actions
-- **Error Handling**: Graceful degradation and retry mechanisms
-- **Loading States**: Professional loading and error states
-- **Responsive Design**: Works on all screen sizes
+* **Real-time Signal Monitoring**: Live RF signal visualization
+* **Hardware Control**: GPIO, transceiver status, frequency tuning
+* **Audit Trail**: Complete operation logging and certification
+* **Multi-device Support**: Desktop, tablet, mobile, embedded
+* **Accessibility**: WCAG 2.1 AA compliance
+* **Performance**: Optimized for real-time RF operations
+* **Command Palette**: Global search and quick actions
+* **Error Handling**: Graceful degradation and retry mechanisms
+* **Loading States**: Professional loading and error states
+* **Responsive Design**: Works on all screen sizes
 
 ## 🧪 Testing Strategy
 
 ### Unit Tests (Vitest)
-- Component testing with React Testing Library
-- Store testing with Zustand
-- Service testing with mocked APIs
-- Coverage target: 90%+
+
+* Component testing with React Testing Library
+* Store testing with Zustand
+* Service testing with mocked APIs
+* Coverage target: 90%+
 
 ### E2E Tests (Playwright)
-- Happy path testing
-- Error scenario testing
-- Cross-browser compatibility
-- Visual regression testing
+
+* Happy path testing
+* Error scenario testing
+* Cross-browser compatibility
+* Visual regression testing
 
 ### Performance Tests (Lighthouse)
-- Core Web Vitals monitoring
-- Bundle size analysis
-- Performance budgets
+
+* Core Web Vitals monitoring
+* Bundle size analysis
+* Performance budgets
 
 ### Security Tests
-- Dependency vulnerability scanning
-- Environment variable validation
-- API security testing
+
+* Dependency vulnerability scanning
+* Environment variable validation
+* API security testing
 
 ## 🚀 CI/CD Pipeline
 
 The project includes a comprehensive CI/CD pipeline with:
 
-- **Code Quality Gates**: ESLint, TypeScript, Prettier
-- **Testing**: Unit tests, E2E tests, coverage reports
-- **Security**: Dependency scanning, vulnerability checks
-- **Performance**: Lighthouse CI, bundle analysis
-- **Deployment**: Automated staging and production deployments
-- **Quality Gates**: All checks must pass before deployment
+* **Code Quality Gates**: ESLint, TypeScript, Prettier
+* **Testing**: Unit tests, E2E tests, coverage reports
+* **Security**: Dependency scanning, vulnerability checks
+* **Performance**: Lighthouse CI, bundle analysis
+* **Deployment**: Automated staging and production deployments
+* **Quality Gates**: All checks must pass before deployment
 
 ## 🌍 Community & Support
 
-- **Documentation**: [Wiki](https://github.com/ViewUnitySystemT/ModulithCertivox/wiki)
-- **Issues**: [GitHub Issues](https://github.com/ViewUnitySystemT/ModulithCertivox/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/ViewUnitySystemT/ModulithCertivox/discussions)
-- **Roadmap**: [Project Board](https://github.com/ViewUnitySystemT/ModulithCertivox/projects)
+* **Documentation**: [Wiki](https://github.com/ViewUnitySystemT/ModulithCertivox/wiki)
+* **Issues**: [GitHub Issues](https://github.com/ViewUnitySystemT/ModulithCertivox/issues)
+* **Discussions**: [GitHub Discussions](https://github.com/ViewUnitySystemT/ModulithCertivox/discussions)
+* **Roadmap**: [Project Board](https://github.com/ViewUnitySystemT/ModulithCertivox/projects)
 
 ## 📄 License
 
@@ -277,3 +319,9 @@ For more information, see [CONTRIBUTING.md](CONTRIBUTING.md).
 ---
 
 **Ready to revolutionize RF communication interfaces? Let's build the future together!** 🚀📡
+
+## 🌐 **LIVE DEMO**
+
+**[🚀 Try ModulithFunkCore Now!](https://viewunitysystemt.github.io/ModulithCertivox/)**
+
+Experience the complete Yaesu FTDX101D Reference Implementation with Canvas-Only execution, real-time RF simulation, and full audit trail functionality!
