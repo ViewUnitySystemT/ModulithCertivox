@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RF UI Portal - Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <h2>RF UI Portal</h2>
+        <p>Redirecting to main interface...</p>
+    </div>
+
+    <script>
+        // Store the current path and redirect to main page
+        (function() {
+            const currentPath = location.pathname.replace('/ModulithCertivox', '');
+            const search = location.search;
+            const hash = location.hash;
+            
+            // Store the original path for the main page to handle
+            if (currentPath !== '/' && currentPath !== '') {
+                sessionStorage.setItem('redirect', currentPath + search + hash);
+            }
+            
+            // Redirect to the main page
+            window.location.href = '/ModulithCertivox/';
+        })();
+    </script>
+</body>
+</html>

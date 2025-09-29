@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { Toaster } from 'react-hot-toast';
-import ErrorBoundary from '../components/ErrorBoundary';
 
 export default function Home() {
   const [mode, setMode] = useState('classic');
@@ -90,8 +89,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ErrorBoundary>
-        <div className={`min-h-screen ${mode === 'audit' ? 'bg-gray-100 dark:bg-gray-900' : 'bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900'}`}>
+      <div className={`min-h-screen ${mode === 'audit' ? 'bg-gray-100 dark:bg-gray-900' : 'bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900'}`}>
         
         {/* Header */}
         <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
@@ -193,7 +191,6 @@ export default function Home() {
           }}
         />
       </div>
-      </ErrorBoundary>
     </>
   );
 }
