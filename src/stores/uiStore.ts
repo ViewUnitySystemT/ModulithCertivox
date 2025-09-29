@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 export interface UIState {
-  mode: 'classic' | 'minimal' | 'hardware' | 'neuro' | 'satellite' | 'audit' | 'transceiver' | 'groundstation';
+  mode: 'classic' | 'minimal' | 'hardware' | 'neuro' | 'satellite' | 'audit' | 'transceiver' | 'groundstation' | 'funkcore';
   sidebarOpen: boolean;
   fullscreen: boolean;
   animationsEnabled: boolean;

@@ -72,6 +72,13 @@ const uiVariants = [
     icon: Satellite,
     color: 'teal',
   },
+  {
+    id: 'funkcore' as const,
+    name: 'ModulithFunkCore',
+    description: 'Yaesu FTDX101D Reference - Complete RF System',
+    icon: Radio,
+    color: 'yellow',
+  },
 ];
 
 export default function UISwitcher() {

@@ -90,7 +90,7 @@ export default function CanvasExecutionLayer({
           ...prev.performance,
           renderTime,
           memoryUsage: (performance as any).memory?.usedJSHeapSize || 0,
-          cpuUsage: await getCPUUsage(),
+          cpuUsage: 0, // Simplified for now
         }
       }));
 

@@ -10,6 +10,7 @@ import SatelliteUI from '../variants/SatelliteUI';
 import AuditUI from '../variants/AuditUI';
 import TransceiverUI from '../variants/TransceiverUI';
 import GroundStationUI from '../variants/GroundStationUI';
+import ModulithFunkCore from '../variants/ModulithFunkCore';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 export default function Canvas() {
@@ -43,6 +44,8 @@ export default function Canvas() {
         return <TransceiverUI />;
       case 'groundstation':
         return <GroundStationUI />;
+      case 'funkcore':
+        return <ModulithFunkCore />;
       default:
         return <ClassicUI />;
     }
