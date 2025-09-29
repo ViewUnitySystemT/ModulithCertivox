@@ -342,5 +342,3 @@ export const getDeviceCapabilities = async (device: RFDevice): Promise<Record<st
 
   return capabilities[device] || capabilities['Unknown'];
 };
-
-// Functions are already exported above
