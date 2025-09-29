@@ -93,106 +93,106 @@ export default function Home() {
       <ErrorBoundary>
         <div className={`min-h-screen ${mode === 'audit' ? 'bg-gray-100 dark:bg-gray-900' : 'bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-blue-900'}`}>
         
-        {/* Header */}
-        <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex justify-between items-center">
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  RF UI Portal
-                </h1>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Professional RF Communication System
-                </p>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-sm text-gray-600 dark:text-gray-300">Online</span>
+          {/* Header */}
+          <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+            <div className="container mx-auto px-4 py-4">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    RF UI Portal
+                  </h1>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Professional RF Communication System
+                  </p>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Online</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </header>
+          </header>
 
-        {/* Main Content */}
-        <main className="container mx-auto px-4 py-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[calc(100vh-200px)]">
-            
-            {/* Left Panel - UI Canvas */}
-            <div className="lg:col-span-2">
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 h-full min-h-[600px]">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
-                    RF System Interface
-                  </h2>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    Mode: {mode}
-                  </span>
-                </div>
-                <div className="h-full overflow-auto">
-                  {renderUI()}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Panel - Controls */}
-            <div className="space-y-6">
+          {/* Main Content */}
+          <main className="container mx-auto px-4 py-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[calc(100vh-200px)]">
               
-              {/* Quick Controls */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
-                  Quick Controls
-                </h3>
-                <div className="space-y-2">
-                  <button className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors">
-                    Signal Scan
-                  </button>
-                  <button className="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-colors">
-                    Start Monitoring
-                  </button>
-                  <button className="w-full bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded transition-colors">
-                    Frequency Analysis
-                  </button>
+              {/* Left Panel - UI Canvas */}
+              <div className="lg:col-span-2">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 h-full min-h-[600px]">
+                  <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+                      RF System Interface
+                    </h2>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      Mode: {mode}
+                    </span>
+                  </div>
+                  <div className="h-full overflow-auto">
+                    {renderUI()}
+                  </div>
                 </div>
               </div>
 
-              {/* Status Panel */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
-                  System Status
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-300">Connection</span>
-                    <span className="text-sm text-green-600 font-medium">Connected</span>
+              {/* Right Panel - Controls */}
+              <div className="space-y-6">
+                
+                {/* Quick Controls */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+                    Quick Controls
+                  </h3>
+                  <div className="space-y-2">
+                    <button className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors">
+                      Signal Scan
+                    </button>
+                    <button className="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-colors">
+                      Start Monitoring
+                    </button>
+                    <button className="w-full bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded transition-colors">
+                      Frequency Analysis
+                    </button>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-300">Signal Strength</span>
-                    <span className="text-sm text-green-600 font-medium">-65 dBm</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600 dark:text-gray-300">Frequency</span>
-                    <span className="text-sm text-blue-600 font-medium">2.4 GHz</span>
+                </div>
+
+                {/* Status Panel */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+                    System Status
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600 dark:text-gray-300">Connection</span>
+                      <span className="text-sm text-green-600 font-medium">Connected</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600 dark:text-gray-300">Signal Strength</span>
+                      <span className="text-sm text-green-600 font-medium">-65 dBm</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600 dark:text-gray-300">Frequency</span>
+                      <span className="text-sm text-blue-600 font-medium">2.4 GHz</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </main>
+          </main>
 
-        {/* Toast Notifications */}
-        <Toaster 
-          position="top-right"
-          toastOptions={{
-            duration: 4000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-            },
-          }}
-        />
-      </div>
+          {/* Toast Notifications */}
+          <Toaster 
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: '#363636',
+                color: '#fff',
+              },
+            }}
+          />
+        </div>
       </ErrorBoundary>
     </>
   );
