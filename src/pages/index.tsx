@@ -63,11 +63,11 @@ export default function Home() {
         
         {/* Main Content Area */}
         <main className="container mx-auto px-4 py-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-screen">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[calc(100vh-200px)]">
             
             {/* Left Panel - UI Canvas */}
             <div className="lg:col-span-2">
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 h-full">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 h-full min-h-[600px]">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
                     RF System Interface
@@ -86,7 +86,7 @@ export default function Home() {
             <div className="space-y-6">
               
               {/* Chat Canvas */}
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg min-h-[300px]">
                 <ChatCanvas />
               </div>
               

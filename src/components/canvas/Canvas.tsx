@@ -80,7 +80,7 @@ export default function Canvas() {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="h-full"
+      className="h-full w-full"
     >
       {/* Mode Indicator */}
       <div className="mb-4 flex items-center space-x-2">
@@ -95,7 +95,7 @@ export default function Canvas() {
       </div>
 
       {/* Dynamic UI Container */}
-      <div className="relative">
+      <div className="relative w-full h-full">
         {renderUI()}
         
         {/* Background Pattern */}
