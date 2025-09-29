@@ -155,7 +155,7 @@ export const ModulithExport = {
   },
   
   exportAsCSV(data: any[]): string {
-    if (data.length === 0) return '';
+    if (data.length === 0 || !data[0]) return '';
     
     const headers = Object.keys(data[0]).join(',');
     const rows = data.map(item => Object.values(item).join(','));

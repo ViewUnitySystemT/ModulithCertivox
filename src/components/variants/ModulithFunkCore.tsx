@@ -182,7 +182,7 @@ export const ModulithFunkCore = () => {
           usrp: await HardwareEmulation.emulateUSRP(),
         };
         setState(prev => ({ ...prev, hardwareEmulation }));
-        addAuditEntry(`Hardware emulation initialized: ${Object.keys(hardwareEmulation).length} devices`);
+        addAuditEntry(`Hardware emulation initialized: ${hardwareEmulation ? Object.keys(hardwareEmulation).length : 0} devices`);
         
         // Audio-System initialisieren
         if (state.audioEnabled) {
@@ -494,9 +494,9 @@ export const ModulithFunkCore = () => {
                 }}
                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                {Object.keys(FREQUENCY_BANDS).map(band => (
+                {FREQUENCY_BANDS ? Object.keys(FREQUENCY_BANDS).map(band => (
                   <option key={band} value={band}>{band}</option>
-                ))}
+                )) : null}
               </select>
             </div>
             

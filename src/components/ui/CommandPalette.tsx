@@ -382,7 +382,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
 
             {/* Commands List */}
             <div className="max-h-96 overflow-y-auto">
-              {Object.keys(groupedCommands).length === 0 ? (
+              {!groupedCommands || Object.keys(groupedCommands).length === 0 ? (
                 <div className="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
                   <Search className="w-8 h-8 mx-auto mb-2 opacity-50" />
                   <p>No commands found</p>
