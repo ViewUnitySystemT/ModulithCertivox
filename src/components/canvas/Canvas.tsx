@@ -12,6 +12,7 @@ import TransceiverUI from '../variants/TransceiverUI';
 import GroundStationUI from '../variants/GroundStationUI';
 import ModulithFunkCore from '../variants/ModulithFunkCore';
 import LiveAuditCanvas from './LiveAuditCanvas';
+import FallbackUI from '../variants/FallbackUI';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 export default function Canvas() {
@@ -41,38 +42,19 @@ export default function Canvas() {
         case 'satellite':
           return <SatelliteUI />;
         case 'audit':
-          return <AuditUI />;
+          return <LiveAuditCanvas />;
         case 'transceiver':
           return <TransceiverUI />;
         case 'groundstation':
           return <GroundStationUI />;
         case 'funkcore':
           return <ModulithFunkCore />;
-        case 'audit':
-          return <LiveAuditCanvas />;
         default:
           return <ClassicUI />;
       }
     } catch (error) {
       console.error('Error rendering UI component:', error);
-      return (
-        <div className="flex items-center justify-center h-full">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
-              UI Component Error
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              Switching to Classic UI mode
-            </p>
-            <button 
-              onClick={() => window.location.reload()}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Reload Page
-            </button>
-          </div>
-        </div>
-      );
+      return <FallbackUI />;
     }
   };
 

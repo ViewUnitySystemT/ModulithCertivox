@@ -13,20 +13,31 @@ import { useRFHardwareStore } from '../stores/rfHardwareStore';
 import { useThemeStore } from '../stores/themeStore';
 
 export default function Home() {
-  const { mode } = useUIStore();
-  const { connectionStatus } = useRFHardwareStore();
-  const { currentTheme } = useThemeStore();
   const [pageLoaded, setPageLoaded] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  // Safe store access with error handling
+  let mode = 'classic';
+  let connectionStatus = 'disconnected';
+  let currentTheme = 'light';
+
+  try {
+    const uiStore = useUIStore();
+    const rfStore = useRFHardwareStore();
+    const themeStore = useThemeStore();
+    
+    mode = uiStore?.mode || 'classic';
+    connectionStatus = rfStore?.connectionStatus || 'disconnected';
+    currentTheme = themeStore?.currentTheme || 'light';
+  } catch (error) {
+    console.error('Store access error:', error);
+    setHasError(true);
+  }
 
   useEffect(() => {
-    // Add error handling to prevent infinite loading
-    try {
-      setPageLoaded(true);
-    } catch (error) {
-      console.error('Error during page initialization:', error);
-      setPageLoaded(true); // Still set to true to prevent infinite loading
-    }
+    // Force page load immediately to prevent infinite loading
+    setPageLoaded(true);
   }, []);
 
   if (!pageLoaded) {
@@ -36,6 +47,9 @@ export default function Home() {
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-400 mx-auto mb-4"></div>
           <h2 className="text-xl text-white">RF UI Portal</h2>
           <p className="text-gray-300">Loading Professional Interface...</p>
+          {hasError && (
+            <p className="text-yellow-400 text-sm mt-2">Initializing with fallback mode...</p>
+          )}
         </div>
       </div>
     );
