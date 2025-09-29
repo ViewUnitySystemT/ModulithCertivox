@@ -1,10 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Toaster } from 'react-hot-toast';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 export default function Home() {
   const [mode, setMode] = useState('classic');
+
+  useEffect(() => {
+    // Boot diagnostics - simple version without webpack conflicts
+    const log = (...args: any[]) => {
+      try {
+        const message = args.join(' ') + '\n';
+        localStorage._bootlog = (localStorage._bootlog || '') + message;
+      } catch (e) {
+        // Ignore localStorage errors
+      }
+      console.log('[BOOT]', ...args);
+    };
+
+    log('base', document.baseURI);
+    log('location', location.href);
+    log('timestamp', new Date().toISOString());
+    log('page loaded successfully');
+
+    // Error handlers
+    window.onerror = (message, source, line, column, error) => {
+      log('onerror:', message, source + ':' + line, error?.stack || '');
+    };
+
+    window.addEventListener('unhandledrejection', (event) => {
+      log('unhandled:', event.reason?.stack || event.reason || '');
+    });
+
+    // Handle redirect from 404.html
+    const redirect = sessionStorage.getItem('redirect');
+    if (redirect) {
+      sessionStorage.removeItem('redirect');
+      history.replaceState(null, null, redirect);
+      log('redirected to:', redirect);
+    }
+  }, []);
 
   const renderUI = () => {
     return (
