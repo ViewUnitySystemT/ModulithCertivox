@@ -1,10 +1,5 @@
 # 📡 ModulithCertivox - Professional RF Communication System UI Portal
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-
 > **The world's first unified RF Communication System UI Portal - Professional, Modular, Auditable**
 
 A centralized web portal that unifies all GUI/UX components from the auditable RF stack. Users can switch between different UI styles, control modes, and visualizations - everything modular, auditable, and fully configurable.
@@ -19,20 +14,28 @@ A centralized web portal that unifies all GUI/UX components from the auditable R
 - 🧬 **Neurointerface Ready** - EEG/EMG integration preparation
 - 🏗️ **Hardware Integration** - Real RF hardware control via WebSocket/API
 - 🎨 **Professional Themes** - Dark, Light, Legacy, and Custom themes
+- ⌨️ **Command Palette** - Global search and quick actions (Ctrl+K)
+- 🔍 **Advanced Search** - Fuzzy search across all components
+- 📊 **Real-time Monitoring** - Live hardware status and performance metrics
+- 🔐 **Security Hardened** - Environment validation, secure logging, audit trails
 
 ## 🏛️ UI Variants
 
-| Variant | Focus | Use Case |
-|---------|-------|----------|
-| **Classic** | Full Audit View | Complete RF system monitoring with certifications |
-| **Minimal** | Embedded Systems | Essential controls for limited hardware |
-| **Hardware** | Real-time Hardware Status | GPIO, RF levels, transceiver monitoring |
-| **Neuro** | Neurointerface Integration | EEG/EMG visualization, BCI mode |
+| Variant      | Focus                      | Use Case                                          |
+| ------------ | -------------------------- | ------------------------------------------------- |
+| **Classic**  | Full Audit View            | Complete RF system monitoring with certifications |
+| **Minimal**  | Embedded Systems           | Essential controls for limited hardware           |
+| **Hardware** | Real-time Hardware Status  | GPIO, RF levels, transceiver monitoring           |
+| **Neuro**    | Neurointerface Integration | EEG/EMG visualization, BCI mode                   |
+| **Satellite** | Ground Station Operations | Satellite tracking and communication management   |
+| **Transceiver** | RF Transceiver Control | Channel management and signal processing         |
+| **Ground Station** | Mission Control | Multi-station coordination and monitoring        |
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - Python 3.9+ (for RF backend)
 - RF Hardware (optional, simulation available)
 
@@ -46,8 +49,11 @@ cd ModulithCertivox
 # Install dependencies
 npm install
 
-# Setup RF backend (optional)
-pip install -r requirements.txt
+# Copy environment configuration
+cp env.example .env.local
+
+# Configure your environment variables
+# Edit .env.local with your settings
 
 # Start development server
 npm run dev
@@ -68,15 +74,20 @@ ModulithCertivox/
 │   │   ├── canvas/               # Dynamic UI canvas system
 │   │   ├── variants/             # UI variant implementations
 │   │   ├── chat/                 # Chat canvas components
+│   │   ├── ui/                   # Core UI components
 │   │   ├── visualization/        # Signal & audit visualization
 │   │   └── settings/             # Configuration components
 │   ├── stores/                   # Zustand state management
 │   ├── lib/                      # Utilities and API wrappers
-│   ├── server/                   # Python RF backend
+│   │   ├── logger.ts             # Professional logging system
+│   │   ├── env.ts                # Environment validation
+│   │   └── services.ts           # Real data services
 │   ├── styles/                   # TailwindCSS + custom themes
-│   └── types/                    # TypeScript definitions
+│   ├── types/                    # TypeScript definitions
+│   └── test/                     # Test utilities
 ├── public/                       # Static assets
 ├── docs/                        # Documentation
+├── .github/workflows/           # CI/CD pipelines
 └── tests/                       # Test suites
 ```
 
@@ -88,9 +99,38 @@ ModulithCertivox/
 - **Backend**: Python Flask/FastAPI for RF hardware
 - **Real-time**: Socket.IO for live communication
 - **Charts**: Chart.js for signal visualization
-- **Testing**: Jest + Cypress
+- **Search**: Fuse.js for fuzzy search
+- **Logging**: Custom logger with remote capabilities
+- **Testing**: Vitest + Playwright + Jest
+- **CI/CD**: GitHub Actions with quality gates
 
 ## ⚙️ Configuration
+
+### Environment Variables
+
+Copy `env.example` to `.env.local` and configure:
+
+```bash
+# Application Configuration
+NODE_ENV=development
+NEXT_PUBLIC_APP_NAME=RF UI Portal
+NEXT_PUBLIC_APP_VERSION=1.0.0
+
+# RF Hardware Configuration
+RF_HARDWARE_ENDPOINT=http://localhost:8080/api/rf
+RF_HARDWARE_API_KEY=your-api-key-here
+RF_HARDWARE_TIMEOUT=5000
+
+# Logging Configuration
+LOG_LEVEL=debug
+LOG_REMOTE_ENDPOINT=http://localhost:3001/api/logs
+
+# Feature Flags
+ENABLE_RF_HARDWARE=true
+ENABLE_NEURAL_INTERFACE=false
+ENABLE_AUDIT_EXPORT=true
+ENABLE_REAL_TIME_MONITORING=true
+```
 
 ### User Settings
 
@@ -110,30 +150,34 @@ interface UserSettings {
 }
 ```
 
-### Theme Customization
-
-Themes are defined in `src/styles/themes/`:
-
-```css
-/* Custom theme example */
-:root[data-theme="custom"] {
-  --primary: 255 107 53;
-  --secondary: 139 92 246;
-  --background: 15 20 25;
-  --foreground: 0 255 136;
-}
-```
-
 ## 🧪 Development
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run test` - Run unit tests
-- `npm run test:e2e` - Run end-to-end tests
-- `npm run rf-server` - Start RF backend server
-- `npm run audit-export` - Export audit data
+```bash
+# Development
+npm run dev              # Start development server
+npm run build           # Build for production
+npm run start           # Start production server
+
+# Code Quality
+npm run lint            # Run ESLint
+npm run lint:fix        # Fix ESLint issues
+npm run typecheck       # Run TypeScript check
+npm run format          # Format code with Prettier
+npm run format:check     # Check code formatting
+
+# Testing
+npm run test            # Run unit tests
+npm run test:ui         # Run tests with UI
+npm run test:coverage   # Run tests with coverage
+npm run test:e2e        # Run E2E tests
+npm run test:e2e:ui     # Run E2E tests with UI
+
+# Analysis
+npm run analyze         # Bundle analysis
+npm run clean           # Clean build artifacts
+```
 
 ### Adding New UI Variants
 
@@ -141,13 +185,17 @@ Themes are defined in `src/styles/themes/`:
 2. Add to variant switcher in `src/stores/uiStore.ts`
 3. Define theme in `src/styles/themes/`
 4. Add tests in `tests/variants/`
+5. Update command palette in `src/components/ui/CommandPalette.tsx`
 
 ## 🔐 Security & Audit
 
-- All RF communications are logged and auditable
-- User actions are traceable with timestamps
-- Hardware access is authenticated and secured
-- Export functionality for compliance reporting
+- **Environment Validation**: Zod schema validation for all environment variables
+- **Secure Logging**: Structured logging with remote capabilities
+- **Audit Trail**: Complete operation logging and certification
+- **Hardware Access**: Authenticated and secured hardware control
+- **Export Functionality**: Compliance reporting capabilities
+- **No Console Logs**: All logging goes through professional logger
+- **Type Safety**: Strict TypeScript configuration with no `any` types
 
 ## 📊 Professional Features
 
@@ -157,6 +205,45 @@ Themes are defined in `src/styles/themes/`:
 - **Multi-device Support**: Desktop, tablet, mobile, embedded
 - **Accessibility**: WCAG 2.1 AA compliance
 - **Performance**: Optimized for real-time RF operations
+- **Command Palette**: Global search and quick actions
+- **Error Handling**: Graceful degradation and retry mechanisms
+- **Loading States**: Professional loading and error states
+- **Responsive Design**: Works on all screen sizes
+
+## 🧪 Testing Strategy
+
+### Unit Tests (Vitest)
+- Component testing with React Testing Library
+- Store testing with Zustand
+- Service testing with mocked APIs
+- Coverage target: 90%+
+
+### E2E Tests (Playwright)
+- Happy path testing
+- Error scenario testing
+- Cross-browser compatibility
+- Visual regression testing
+
+### Performance Tests (Lighthouse)
+- Core Web Vitals monitoring
+- Bundle size analysis
+- Performance budgets
+
+### Security Tests
+- Dependency vulnerability scanning
+- Environment variable validation
+- API security testing
+
+## 🚀 CI/CD Pipeline
+
+The project includes a comprehensive CI/CD pipeline with:
+
+- **Code Quality Gates**: ESLint, TypeScript, Prettier
+- **Testing**: Unit tests, E2E tests, coverage reports
+- **Security**: Dependency scanning, vulnerability checks
+- **Performance**: Lighthouse CI, bundle analysis
+- **Deployment**: Automated staging and production deployments
+- **Quality Gates**: All checks must pass before deployment
 
 ## 🌍 Community & Support
 

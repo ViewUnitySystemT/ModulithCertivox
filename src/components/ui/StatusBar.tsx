@@ -3,7 +3,6 @@ import {
   Activity, 
   Thermometer, 
   Cpu, 
-  Memory, 
   HardDrive,
   Wifi,
   Battery,
@@ -47,7 +46,7 @@ export default function StatusBar({ connectionStatus, currentMode, currentTheme 
     },
     {
       id: 'memory',
-      icon: Memory,
+      icon: HardDrive,
       label: 'Memory',
       value: `${hardwareData?.memoryUsage?.toFixed(0) || 68}%`,
       status: hardwareData?.memoryUsage > 85 ? 'warning' : 'success',

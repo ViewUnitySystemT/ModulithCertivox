@@ -38,10 +38,10 @@ export const useUIStore = create<UIState>()(
     {
       name: 'rf-ui-store',
       version: 1,
-      migrate: (persistedState: any, version: number) => {
+      migrate: (persistedState: unknown, version: number) => {
         // Migration logic for future store updates
         if (version < 1) {
-          return { ...persistedState, version: 1 };
+          return { ...(persistedState as Record<string, unknown>), version: 1 };
         }
         return persistedState;
       },

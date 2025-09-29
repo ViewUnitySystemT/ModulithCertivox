@@ -6,6 +6,7 @@ import ChatCanvas from '../components/chat/ChatCanvas';
 import UISwitcher from '../components/settings/UISwitcher';
 import StatusBar from '../components/ui/StatusBar';
 import ProfessionalHeader from '../components/ui/ProfessionalHeader';
+import CommandPalette from '../components/ui/CommandPalette';
 import { useUIStore } from '../stores/uiStore';
 import { useRFHardwareStore } from '../stores/rfHardwareStore';
 import { useThemeStore } from '../stores/themeStore';
@@ -15,6 +16,7 @@ export default function Home() {
   const { connectionStatus } = useRFHardwareStore();
   const { currentTheme } = useThemeStore();
   const [pageLoaded, setPageLoaded] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
 
   useEffect(() => {
     setPageLoaded(true);
@@ -133,6 +135,12 @@ export default function Home() {
               color: currentTheme === 'dark' ? '#ffffff' : '#1f2937',
             },
           }}
+        />
+        
+        {/* Command Palette */}
+        <CommandPalette 
+          isOpen={commandPaletteOpen}
+          onClose={() => setCommandPaletteOpen(false)}
         />
       </div>
     </>

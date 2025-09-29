@@ -225,10 +225,10 @@ export const useThemeStore = create<ThemeState>()(
     {
       name: 'rf-theme-store',
       version: 1,
-      migrate: (persistedState: any, version: number) => {
+      migrate: (persistedState: unknown, version: number) => {
         if (version < 1) {
           return { 
-            ...persistedState, 
+            ...(persistedState as Record<string, unknown>), 
             version: 1,
             accessibility: {
               highContrast: false,

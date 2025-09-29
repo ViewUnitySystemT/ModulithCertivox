@@ -94,7 +94,7 @@ export default function ChatCanvas() {
       
       else if (lowerCommand.includes('frequency') || lowerCommand.includes('freq')) {
         const freqMatch = command.match(/(\d+\.?\d*)\s*(?:mhz|ghz)/i);
-        if (freqMatch) {
+        if (freqMatch && freqMatch[1]) {
           const freq = parseFloat(freqMatch[1]);
           const unit = command.toLowerCase().includes('ghz') ? freq * 1000 : freq;
           setFrequency(unit);
@@ -148,7 +148,7 @@ export default function ChatCanvas() {
       addMessage({
         type: 'error',
         content: `Error processing command: ${error instanceof Error ? error.message : 'Unknown error'}`,
-        metadata: { command: command.toLowerCase().split(' ')[0] },
+        metadata: { command: command?.toLowerCase().split(' ')[0] || 'unknown' },
       });
     } finally {
       setIsProcessing(false);
@@ -171,13 +171,13 @@ export default function ChatCanvas() {
       e.preventDefault();
       if (historyIndex < commandHistory.length - 1) {
         setHistoryIndex(historyIndex + 1);
-        setInputValue(commandHistory[historyIndex + 1]);
+        setInputValue(commandHistory[historyIndex + 1] || '');
       }
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
       if (historyIndex > 0) {
         setHistoryIndex(historyIndex - 1);
-        setInputValue(commandHistory[historyIndex - 1]);
+        setInputValue(commandHistory[historyIndex - 1] || '');
       } else if (historyIndex === 0) {
         setHistoryIndex(-1);
         setInputValue('');

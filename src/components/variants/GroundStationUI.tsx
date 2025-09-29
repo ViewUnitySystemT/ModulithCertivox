@@ -19,164 +19,64 @@ import {
   Upload,
   Settings
 } from 'lucide-react';
-
-interface GroundStation {
-  id: string;
-  name: string;
-  location: string;
-  latitude: number;
-  longitude: number;
-  status: 'online' | 'offline' | 'maintenance';
-  elevation: number;
-  azimuth: number;
-  signalStrength: number;
-  lastContact: string;
-}
-
-interface Satellite {
-  id: string;
-  name: string;
-  noradId: string;
-  altitude: number;
-  inclination: number;
-  period: number;
-  status: 'active' | 'passive' | 'decaying';
-  nextPass: string;
-  duration: number;
-  maxElevation: number;
-}
-
-interface CommunicationSession {
-  id: string;
-  satellite: string;
-  groundStation: string;
-  startTime: string;
-  endTime: string;
-  status: 'active' | 'completed' | 'failed';
-  dataTransferred: number;
-  frequency: string;
-  modulation: string;
-}
+import { 
+  groundStationService, 
+  GroundStation, 
+  Satellite as SatelliteData, 
+  CommunicationSession 
+} from '../../lib/services';
+import { rfLogger } from '../../lib/logger';
 
 export default function GroundStationUI() {
   const [groundStations, setGroundStations] = useState<GroundStation[]>([]);
-  const [satellites, setSatellites] = useState<Satellite[]>([]);
+  const [satellites, setSatellites] = useState<SatelliteData[]>([]);
   const [sessions, setSessions] = useState<CommunicationSession[]>([]);
   const [selectedStation, setSelectedStation] = useState<GroundStation | null>(null);
-  const [selectedSatellite, setSelectedSatellite] = useState<Satellite | null>(null);
+  const [selectedSatellite, setSelectedSatellite] = useState<SatelliteData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [isTracking, setIsTracking] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
 
-  // Mock data initialization
+  // Load data from services
   useEffect(() => {
-    const mockGroundStations: GroundStation[] = [
-      {
-        id: 'gs1',
-        name: 'Primary Ground Station',
-        location: 'Cape Canaveral, FL',
-        latitude: 28.3922,
-        longitude: -80.6077,
-        status: 'online',
-        elevation: 45.2,
-        azimuth: 180.5,
-        signalStrength: -42,
-        lastContact: '2025-01-18 14:25:30'
-      },
-      {
-        id: 'gs2',
-        name: 'Secondary Ground Station',
-        location: 'Goldstone, CA',
-        latitude: 35.4267,
-        longitude: -116.8900,
-        status: 'online',
-        elevation: 38.7,
-        azimuth: 225.1,
-        signalStrength: -48,
-        lastContact: '2025-01-18 14:20:15'
-      },
-      {
-        id: 'gs3',
-        name: 'Backup Ground Station',
-        location: 'Canberra, Australia',
-        latitude: -35.2809,
-        longitude: 149.1300,
-        status: 'maintenance',
-        elevation: 0,
-        azimuth: 0,
-        signalStrength: -999,
-        lastContact: '2025-01-18 12:45:00'
-      }
-    ];
+    const loadData = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
 
-    const mockSatellites: Satellite[] = [
-      {
-        id: 'sat1',
-        name: 'ISS',
-        noradId: '25544',
-        altitude: 408,
-        inclination: 51.6,
-        period: 92.7,
-        status: 'active',
-        nextPass: '2025-01-18 15:30:00',
-        duration: 8.5,
-        maxElevation: 67.2
-      },
-      {
-        id: 'sat2',
-        name: 'NOAA-18',
-        noradId: '28654',
-        altitude: 850,
-        inclination: 98.7,
-        period: 102.1,
-        status: 'active',
-        nextPass: '2025-01-18 16:15:00',
-        duration: 12.3,
-        maxElevation: 45.8
-      },
-      {
-        id: 'sat3',
-        name: 'Hubble Space Telescope',
-        noradId: '20580',
-        altitude: 540,
-        inclination: 28.5,
-        period: 95.4,
-        status: 'active',
-        nextPass: '2025-01-18 17:45:00',
-        duration: 6.2,
-        maxElevation: 23.1
-      }
-    ];
+        const [stationsData, satellitesData, sessionsData] = await Promise.all([
+          groundStationService.getGroundStations(),
+          groundStationService.getSatellites(),
+          groundStationService.getCommunicationSessions(),
+        ]);
 
-    const mockSessions: CommunicationSession[] = [
-      {
-        id: 'sess1',
-        satellite: 'ISS',
-        groundStation: 'Primary Ground Station',
-        startTime: '2025-01-18 14:00:00',
-        endTime: '2025-01-18 14:08:30',
-        status: 'completed',
-        dataTransferred: 125.6,
-        frequency: '437.8 MHz',
-        modulation: 'FM'
-      },
-      {
-        id: 'sess2',
-        satellite: 'NOAA-18',
-        groundStation: 'Secondary Ground Station',
-        startTime: '2025-01-18 14:15:00',
-        endTime: '2025-01-18 14:27:30',
-        status: 'active',
-        dataTransferred: 89.3,
-        frequency: '137.9 MHz',
-        modulation: 'APT'
-      }
-    ];
+        setGroundStations(stationsData);
+        setSatellites(satellitesData);
+        setSessions(sessionsData);
 
-    setGroundStations(mockGroundStations);
-    setSatellites(mockSatellites);
-    setSessions(mockSessions);
-    setSelectedStation(mockGroundStations[0]);
-    setSelectedSatellite(mockSatellites[0]);
+        if (stationsData.length > 0) {
+          setSelectedStation(stationsData[0]);
+        }
+        if (satellitesData.length > 0) {
+          setSelectedSatellite(satellitesData[0]);
+        }
+
+        rfLogger.hardware('Loaded ground station data', {
+          stations: stationsData.length,
+          satellites: satellitesData.length,
+          sessions: sessionsData.length,
+        });
+      } catch (err) {
+        const errorMessage = err instanceof Error ? err.message : 'Failed to load data';
+        setError(errorMessage);
+        rfLogger.error('Failed to load ground station data', { error: errorMessage });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadData();
   }, []);
 
   const getStatusIcon = (status: string) => {
@@ -214,6 +114,44 @@ export default function GroundStationUI() {
   const handleRecording = () => {
     setIsRecording(!isRecording);
   };
+
+  if (isLoading) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <div className="text-center">
+          <RefreshCw className="w-8 h-8 animate-spin text-blue-500 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            Loading Ground Station Data
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Connecting to RF hardware services...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <div className="text-center">
+          <AlertTriangle className="w-8 h-8 text-red-500 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            Connection Error
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            {error}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          >
+            Retry Connection
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-full flex flex-col bg-white dark:bg-gray-900">
@@ -480,3 +418,4 @@ export default function GroundStationUI() {
     </div>
   );
 }
+

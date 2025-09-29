@@ -34,7 +34,7 @@ export interface AuditData {
   user: string;
   result: 'success' | 'warning' | 'error';
   details?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   ipAddress?: string;
   sessionId?: string;
 }
@@ -110,8 +110,8 @@ export interface ChatMessage {
 export interface RFCommand {
   id: string;
   command: string;
-  parameters: Record<string, any>;
-  result?: any;
+  parameters: Record<string, unknown>;
+  result?: unknown;
   timestamp: number;
   userId: string;
 }
@@ -141,7 +141,7 @@ export interface Certificate {
   valid: boolean;
   expires: Date;
   type: 'rf-hardware' | 'signal-integrity' | 'security' | 'compliance';
-  details: Record<string, any>;
+  details: Record<string, unknown>;
 }
 
 export interface PerformanceMetrics {
@@ -174,7 +174,7 @@ export interface ExportOptions {
     start: Date;
     end: Date;
   };
-  filters?: Record<string, any>;
+  filters?: Record<string, unknown>;
 }
 
 export interface NotificationSettings {
@@ -303,7 +303,7 @@ export enum ScanStatus {
 }
 
 // API Types
-export interface APIResponse<T = any> {
+export interface APIResponse<T = unknown> {
   success: boolean;
   data: T;
   message?: string;
@@ -325,7 +325,7 @@ export interface ErrorResponse {
   error: {
     code: string;
     message: string;
-    details?: Record<string, any>;
+    details?: Record<string, unknown>;
   };
   timestamp: number;
 }
@@ -333,15 +333,15 @@ export interface ErrorResponse {
 // Event Types
 export interface RFEvent {
   type: 'signal-change' | 'connection-change' | 'error' | 'scan-complete';
-  data: any;
+  data: unknown;
   timestamp: number;
   source: string;
 }
 
 export interface CommandEvent extends RFEvent {
   command: string;
-  parameters: Record<string, any>;
-  result?: any;
+  parameters: Record<string, unknown>;
+  result?: unknown;
 }
 
 // Storage Types
@@ -363,8 +363,8 @@ export interface UserPreferences {
 }
 
 // Utility Types
-export type Optional<T, K extends keyof T> = Omit<T, K>] & Partial[Pick<T, K>;
-export type Required<T, K extends keyof T> = T & Required[Pick<T, K>;
+export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+export type Required<T, K extends keyof T> = T & Required<Pick<T, K>>;
 export type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]> };
 
 // React Component Types
@@ -386,7 +386,7 @@ export interface AccessibilityProps {
   'aria-label'?: string;
   'aria-describedby'?: string;
   'aria-hidden'?: boolean;
-为 'role'?: 'button' | 'link' | 'tab' | 'menuitem' | 'dialog';
+  'role'?: 'button' | 'link' | 'tab' | 'menuitem' | 'dialog';
   'tabIndex'?: number;
 }
 
@@ -398,7 +398,7 @@ declare global {
     rfPortalAPI: {
       connect: () => Promise<boolean>;
       disconnect: () => void;
-      sendCommand: (command: string) => Promise<any>;
+      sendCommand: (command: string) => Promise<unknown>;
       getStatus: () => Promise<PerformanceMetrics>;
     };
   }
